@@ -1,0 +1,44 @@
+# LibMOP_Pareto_Front_Learning
+``LibMOP_Pareto_Front_Learning`` is an open-source library built on [PyTorch](https://pytorch.org/) for Learning Pareto Front of Multi-Objective Problem (MOP).
+
+## News
+- **[Jun 04 2024]**: Added support for [Hyper-Transformer](https://arxiv.org/pdf/2402.05955) (ArXiv 2024). Many thanks to the author's help [@Tuan](https://github.com/tuantran23012000/CPFL_Hyper_Transformer).
+- **[Jun 04 2024]**: Added support for [STCH](https://arxiv.org/pdf/2402.19078) (ArXiv 2024). Many thanks to the author's help [@Tuan](https://github.com/tuantran23012000/PHN-CSF).
+- **[Jun 04 2024]**: Added support for [TCH,LOG,PROD,UTILITY,COSINE](https://www.sciencedirect.com/science/article/pii/S089360802300583X) (Neural Network 2024). Many thanks to the author's help [@Tuan](https://github.com/tuantran23012000/PHN-CSF).
+- **[Jun 03 2024]**: Added support for [EPO](http://proceedings.mlr.press/v119/mahapatra20a/mahapatra20a.pdf) (ICML 2020). Many thanks to the author's help [@Mahapatra](https://github.com/dbmptr/EPOSearch).
+- **[Jun 02 2024]**: Added support for [LS](https://openreview.net/pdf/9c01e8c47f7e80e87af0175ac2a5e9a356f518bd.pdf) (ICLR 2021). Many thanks to the author's help [@AvivNavon](https://github.com/AvivNavon/pareto-hypernetworks).
+
+# Supported Algorithms
+
+``LibMOP_Pareto_Front_Learning`` currently supports the following algorithms with MLP architecture (params = 61102) and Transformer architecture (params = 61202), hidden_dim = 100. We calculate Hypervolume Difference (HVD) to each of algorithms:
+## MLP architecture
+| Optimization Strategies                                                                                                                                                                                           | Venues             | CVX2                                                                                                         | Arguments|
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------- | -------------------|
+| Linear Scalarization ([LS](https://openreview.net/pdf/9c01e8c47f7e80e87af0175ac2a5e9a356f518bd.pdf))                                                                                                                                                                                                                     |        ICLR 2021           | 0.00052                                                                                                | ``--model_type mlp --solver LS`` |   
+| Exact Pareto Optimal Search ([EPO](http://proceedings.mlr.press/v119/mahapatra20a/mahapatra20a.pdf))                                                                                                                         | ICML 2020          | 0.00060                                                                                                |``--model_type mlp --solver EPO`` |
+| Weighted Chebyshev ([TCH](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00095                                                                                     | ``--model_type mlp --solver TCH`` |
+| Log Scalarization ([LOG](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00097                                                                                     |``--model_type mlp --solver LOG`` |
+| Product Scalarization ([PROD](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00090                                                                                    |``--model_type mlp --solver PROD`` |
+| Utility Scalarization ([UTILITY](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00046                                                                                    |``--model_type mlp --solver UTILITY`` |
+| Cosine Scalarization ([COSINE](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00161                                                                                    |``--model_type mlp --solver COSINE`` |
+| Smooth Weighted Chebyshev ([STCH](https://arxiv.org/pdf/2402.19078))                                            | ArXiv 2024       | 0.00047         |``--model_type mlp --solver STCH`` |
+
+## Transformer architecture ([Hyper-Trans](https://arxiv.org/pdf/2402.05955))
+| Optimization Strategies                                                                                                                                                                                           | Venues             | CVX2                                                                                                         | Arguments|
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
+| Linear Scalarization ([LS](https://openreview.net/pdf/9c01e8c47f7e80e87af0175ac2a5e9a356f518bd.pdf))                                                                                                                                                                                                                     |        ICLR 2021           | 0.00057                                                                                                |``--model_type trans --solver LS`` |
+| Exact Pareto Optimal Search ([EPO](http://proceedings.mlr.press/v119/mahapatra20a/mahapatra20a.pdf))                                                                                                                         | ICML 2020          | 0.00054                                                                                                |``--model_type trans --solver EPO`` |
+| Weighted Chebyshev ([TCH](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00052                                                                                     | ``--model_type trans --solver TCH`` |
+| Log Scalarization ([LOG](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00078                                                                                     | ``--model_type trans --solver LOG`` |
+| Product Scalarization ([PROD](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00080                                                                                    |``--model_type trans --solver PROD`` |
+| Utility Scalarization ([UTILITY](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00045                                                                                    |``--model_type trans --solver UTILITY`` |
+| Cosine Scalarization ([COSINE](https://www.sciencedirect.com/science/article/pii/S089360802300583X))                                                                          | Neural Network 2024          | 0.00731                                                                                    |``--model_type trans --solver COSINE`` |
+| Smooth Weighted Chebyshev ([STCH](https://arxiv.org/pdf/2402.19078))                                            | ArXiv 2024       | 0.00039         | ``--model_type trans --solver STCH`` |
+
+## Contact Us
+
+If you have any question or suggestion, please feel free to contact us by raising an issue or sending an email to ``trananhtuan23012000@gmail.com``.
+
+## License
+
+``LibMOP_Pareto_Front_Learning`` is released under the [MIT](./LICENSE) license.
